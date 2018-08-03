@@ -8,14 +8,9 @@ import nltk
 import math
 import re
 import mmap
-#for stemming
-#from nltk.stem import PorterStemmer
 from porter2stemmer import Porter2Stemmer
-#from stemming.porter2 import stem
-# for extract_candidate_chunks and extract_candidate_words
 import itertools
 import string
-#end extract_candidate_chunks and extract_candidate_words
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize  
@@ -28,33 +23,18 @@ from textblob import TextBlob as tb
 import os
 import networkx
 from nltk.stem.porter import *
-#stemmer = PorterStemmer()
-
-#Normal Distribution
 import scipy.stats
 import statistics
 from statistics import mean
 from statistics import stdev
 import numpy as np
-#..............
-#ngrams
 from nltk import ngrams
-
 from os import walk
-
-
-#ps = PorterStemmer()
 ps = Porter2Stemmer()
-
-
 import collections
-
-
 import time
-
 from nltk import ngrams
 from nltk.tokenize import RegexpTokenizer
-
 stop_words = set(stopwords.words('english'))
 
 
@@ -143,13 +123,10 @@ author_name_list = []
 author_information_list = []
 
 
-read_2018 = open("E:/Python/scopus/2015.txt", "r") 
-#read_2018 = open("C:/Users/tourist800/python/tf_idf/scopus/2018.txt", "r",encoding="utf8") 
+read_2018 = open("/path/to/input/documents.txt", "r") 
 
 text_2018 = read_2018.read()
-#print(text_2018)
 text_2018_split = text_2018.split("\n\n")
-#print(text_2018_split[0])
 for i in range(0,len(text_2018_split),2):
     text_2018_split_name = text_2018_split[i].split("\n")
     author_name_list = text_2018_split_name[0].split(".,")
@@ -162,7 +139,6 @@ for i in range(0,len(text_2018_split),2):
 
 
 number_of_papers = len(text_2018_split)-(len(text_2018_split)/2)
-#author_impact_finding.processAuthorList(author_name_list,author_information_list)
 author_impact_finding.findAuthorImpactBOP(number_of_papers,author_information_list)
 author_impact_finding.bubble_sort(author_information_list )
 author_impact_finding.displayAuthorInAuthorInformationList(author_information_list)
